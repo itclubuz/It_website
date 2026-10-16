@@ -27,6 +27,13 @@ body{
   background:#070b18;color:#fff;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
   padding:20px 18px calc(20px + env(safe-area-inset-bottom));
+  
+  /* ЗАПРЕТ ВЫДЕЛЕНИЯ ТЕКСТА НА ВСЕЙ СТРАНИЦЕ */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none; /* Запрет вызова меню на iOS */
 }
 
 /* Фон */
@@ -163,6 +170,11 @@ let s=null;try{s=localStorage.getItem('lang')}catch(e){}
 setLang(s||((navigator.language||'').toLowerCase().startsWith('uz')?'uz':'ru'));
 
 document.getElementById('cta').addEventListener('click',()=>{ if(window.fbq) fbq('track','Lead'); });
+
+// ЗАПРЕТ КОНТЕКСТНОГО МЕНЮ И КОПИРОВАНИЯ
+document.addEventListener('contextmenu', e => e.preventDefault()); // Отключает ПКМ / долгое нажатие
+document.addEventListener('copy', e => e.preventDefault());     // Блокирует сочетание Ctrl+C
+document.addEventListener('selectstart', e => e.preventDefault()); // Блокирует выделение мышкой
 </script>
 </body>
 </html>
