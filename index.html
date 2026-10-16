@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Бесплатные IT курсы | Bepul IT kurslar</title>
+<meta name="theme-color" content="#070b18">
+<meta property="og:title" content="Бесплатные IT курсы | Bepul IT kurslar">
+<meta property="og:description" content="Оставь заявку и получи курс в Telegram.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap&subset=cyrillic,latin-ext" rel="stylesheet">
+
+<!-- META PIXEL: раскомментируй и вставь свой ID
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','ТВОЙ_PIXEL_ID');fbq('track','PageView');
+</script>
+-->
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  font-family:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  background:#070b18;color:#fff;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px 18px calc(20px + env(safe-area-inset-bottom));
+}
+
+/* Фон */
+.bg{position:fixed;inset:0;z-index:0}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);animation:drift 14s ease-in-out infinite}
+.o1{width:380px;height:380px;background:#0ea5e9;opacity:.5;top:-120px;left:-120px}
+.o2{width:340px;height:340px;background:#7c3aed;opacity:.5;bottom:-110px;right:-110px;animation-delay:-5s}
+.o3{width:220px;height:220px;background:#2563eb;opacity:.35;top:45%;left:55%;animation-delay:-9s}
+@keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(35px,45px) scale(1.12)}}
+.grid{position:absolute;inset:0;opacity:.07;
+  background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);
+  background-size:42px 42px;
+  -webkit-mask-image:radial-gradient(circle at 50% 45%,#000 0%,transparent 70%);
+  mask-image:radial-gradient(circle at 50% 45%,#000 0%,transparent 70%)}
+
+/* Плавающие иконки */
+.fl{position:absolute;z-index:1;font-size:26px;opacity:.9;animation:bob 6s ease-in-out infinite;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  width:54px;height:54px;border-radius:18px;display:grid;place-items:center;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.f1{top:9%;left:7%}
+.f2{top:14%;right:8%;animation-delay:-2s}
+.f3{bottom:11%;left:9%;animation-delay:-4s}
+.f4{bottom:15%;right:7%;animation-delay:-1s}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-14px) rotate(4deg)}}
+
+/* Язык */
+.lang{position:fixed;top:calc(14px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:5;
+  display:flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);
+  border-radius:999px;padding:3px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.lang button{border:0;background:transparent;color:#94a3b8;font:800 12px 'Manrope',sans-serif;
+  padding:6px 14px;border-radius:999px;cursor:pointer;transition:.2s}
+.lang button.on{background:#fff;color:#070b18}
+
+/* Карточка */
+.card{position:relative;z-index:2;width:100%;max-width:400px;text-align:center;
+  padding:38px 24px 26px;border-radius:32px;
+  background:linear-gradient(160deg,rgba(255,255,255,.12),rgba(255,255,255,.04));
+  border:1px solid rgba(255,255,255,.16);
+  backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.2);
+  animation:rise .8s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(26px) scale(.97)}}
+
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:#bae6fd;
+  background:rgba(56,189,248,.14);border:1px solid rgba(56,189,248,.35);
+  padding:7px 14px;border-radius:999px;margin-bottom:20px}
+.dot{width:8px;height:8px;border-radius:50%;background:#4ade80;animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(74,222,128,.7)}70%,100%{box-shadow:0 0 0 9px rgba(74,222,128,0)}}
+
+h1{font-size:34px;line-height:1.08;font-weight:800;letter-spacing:-.8px;margin-bottom:12px}
+h1 span{background:linear-gradient(90deg,#38bdf8,#a78bfa,#38bdf8);background-size:200% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 5s linear infinite}
+@keyframes flow{to{background-position:200% 0}}
+
+.sub{font-size:15.5px;line-height:1.5;color:#cbd5e1;margin-bottom:20px}
+
+.tags{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.tags span{font-size:12.5px;font-weight:700;color:#e2e8f0;padding:7px 12px;border-radius:999px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12)}
+
+/* Кнопка */
+.btn{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;width:100%;
+  padding:18px 20px;border-radius:20px;text-decoration:none;color:#fff;overflow:hidden;
+  background:linear-gradient(135deg,#0ea5e9 0%,#6366f1 100%);
+  box-shadow:0 14px 34px -8px rgba(56,189,248,.7),inset 0 1px 0 rgba(255,255,255,.3);
+  transition:transform .2s,box-shadow .2s;animation:breathe 2.6s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.025)}}
+.btn::after{content:"";position:absolute;top:0;left:-120%;width:55%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);animation:shine 3s infinite}
+@keyframes shine{to{left:170%}}
+.btn:active{transform:scale(.97);animation:none}
+@media(hover:hover){.btn:hover{box-shadow:0 18px 40px -8px rgba(56,189,248,.9)}}
+.btn svg{width:26px;height:26px;flex:none}
+.btn .t{text-align:left;line-height:1.2}
+.btn b{display:block;font-size:18px;font-weight:800}
+.btn small{display:block;font-size:12px;font-weight:500;opacity:.85;margin-top:2px}
+
+.note{margin-top:14px;font-size:12.5px;color:#94a3b8}
+
+@media(max-height:640px){h1{font-size:28px}.card{padding:28px 20px 20px}.fl{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="bg"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="grid"></div></div>
+
+<div class="fl f1">💻</div>
+<div class="fl f2">🐍</div>
+<div class="fl f3">🎨</div>
+<div class="fl f4">🤖</div>
+
+<div class="lang" role="group" aria-label="Language">
+  <button data-l="ru" class="on">RU</button>
+  <button data-l="uz">UZ</button>
+</div>
+
+<main class="card">
+  <div class="badge"><span class="dot"></span><span data-i="badge">100% бесплатно</span></div>
+
+  <h1 data-i="h1">Бесплатные <span>IT курсы</span></h1>
+  <p class="sub" data-i="sub">Оставь заявку и получи курс прямо сейчас.</p>
+
+  <div class="tags">
+    <span data-i="t1">⚡ Сразу</span>
+    <span data-i="t2">🧩 С нуля</span>
+    <span data-i="t3">📱 С телефона</span>
+  </div>
+
+  <a href="https://t.me/ТВОЯ_ССЫЛКА_НА_КАНАЛ" class="btn" id="cta">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 15.17l-.4 4.2c.58 0 .83-.25 1.13-.55l2.7-2.58 5.6 4.1c1.03.57 1.76.27 2.04-.95l3.7-17.3c.33-1.52-.55-2.12-1.55-1.75L1.3 9.7c-1.5.6-1.48 1.43-.26 1.8l5.5 1.72L19.3 5.2c.6-.4 1.15-.18.7.22z"/></svg>
+    <span class="t"><b data-i="cta">Оставить заявку</b><small data-i="cta2">Zayavka qoldirish</small></span>
+  </a>
+
+  <p class="note" data-i="note">🔒 Без оплаты · откроется Telegram</p>
+</main>
+
+<script>
+const T={
+  ru:{badge:"100% бесплатно",h1:'Бесплатные <span>IT курсы</span>',sub:"Оставь заявку и получи курс прямо сейчас.",
+      t1:"⚡ Сразу",t2:"🧩 С нуля",t3:"📱 С телефона",cta:"Оставить заявку",cta2:"Zayavka qoldirish",note:"🔒 Без оплаты · откроется Telegram"},
+  uz:{badge:"100% bepul",h1:'Bepul <span>IT kurslar</span>',sub:"Zayavka qoldiring va kursni hoziroq oling.",
+      t1:"⚡ Darhol",t2:"🧩 Noldan",t3:"📱 Telefondan",cta:"Zayavka qoldirish",cta2:"Оставить заявку",note:"🔒 To‘lovsiz · Telegram ochiladi"}
+};
+function setLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i]').forEach(e=>{const v=T[l][e.dataset.i]; if(v!==undefined) e.innerHTML=v});
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
+  try{localStorage.setItem('lang',l)}catch(e){}
+}
+document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+let s=null;try{s=localStorage.getItem('lang')}catch(e){}
+setLang(s||((navigator.language||'').toLowerCase().startsWith('uz')?'uz':'ru'));
+
+document.getElementById('cta').addEventListener('click',()=>{ if(window.fbq) fbq('track','Lead'); });
+</script>
+</body>
+</html>
