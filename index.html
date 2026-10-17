@@ -100,13 +100,17 @@ h1 span{background:linear-gradient(90deg,#38bdf8,#a78bfa,#38bdf8);background-siz
   padding:18px 20px;border-radius:20px;text-decoration:none;color:#fff;overflow:hidden;
   background:linear-gradient(135deg,#0ea5e9 0%,#6366f1 100%);
   box-shadow:0 14px 34px -8px rgba(56,189,248,.7),inset 0 1px 0 rgba(255,255,255,.3);
-  transition:transform .2s,box-shadow .2s;animation:breathe 2.6s ease-in-out infinite}
+  transition:transform .2s,box-shadow .2s;animation:breathe 2.6s ease-in-out infinite; cursor:pointer}
 @keyframes breathe{50%{transform:scale(1.025)}}
 .btn::after{content:"";position:absolute;top:0;left:-120%;width:55%;height:100%;
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);animation:shine 3s infinite}
 @keyframes shine{to{left:170%}}
 .btn:active{transform:scale(.97);animation:none}
 @media(hover:hover){.btn:hover{box-shadow:0 18px 40px -8px rgba(56,189,248,.9)}}
+
+/* Чтобы вложенные элементы не перехватывали клик на iOS/Safari */
+.btn * {pointer-events:none;}
+
 .btn svg{width:26px;height:26px;flex:none}
 .btn .t{text-align:left;line-height:1.2}
 .btn b{display:block;font-size:18px;font-weight:800}
@@ -144,7 +148,7 @@ h1 span{background:linear-gradient(90deg,#38bdf8,#a78bfa,#38bdf8);background-siz
     <span data-i="t3">📱 С телефона</span>
   </div>
 
-  <a href="https://t.me/+wNHteLT26Dw5MWIy" class="btn" id="cta">
+  <a href="https://t.me/+wNHteLT26Dw5MWIy" target="_blank" rel="noopener noreferrer" class="btn" id="cta">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 15.17l-.4 4.2c.58 0 .83-.25 1.13-.55l2.7-2.58 5.6 4.1c1.03.57 1.76.27 2.04-.95l3.7-17.3c.33-1.52-.55-2.12-1.55-1.75L1.3 9.7c-1.5.6-1.48 1.43-.26 1.8l5.5 1.72L19.3 5.2c.6-.4 1.15-.18.7.22z"/></svg>
     <span class="t"><b data-i="cta">Оставить заявку</b><small data-i="cta2">Zayavka qoldirish</small></span>
   </a>
