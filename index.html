@@ -33,7 +33,7 @@ body{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  -webkit-touch-callout: none; /* Запрет вызова меню на iOS */
+  -webkit-touch-callout: none;
 }
 
 /* Фон */
@@ -100,7 +100,8 @@ h1 span{background:linear-gradient(90deg,#38bdf8,#a78bfa,#38bdf8);background-siz
   padding:18px 20px;border-radius:20px;text-decoration:none;color:#fff;overflow:hidden;
   background:linear-gradient(135deg,#0ea5e9 0%,#6366f1 100%);
   box-shadow:0 14px 34px -8px rgba(56,189,248,.7),inset 0 1px 0 rgba(255,255,255,.3);
-  transition:transform .2s,box-shadow .2s;animation:breathe 2.6s ease-in-out infinite; cursor:pointer}
+  transition:transform .2s,box-shadow .2s;animation:breathe 2.6s ease-in-out infinite; 
+  cursor:pointer; z-index:10; /* Принудительно выводим кнопку на передний план */}
 @keyframes breathe{50%{transform:scale(1.025)}}
 .btn::after{content:"";position:absolute;top:0;left:-120%;width:55%;height:100%;
   background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);animation:shine 3s infinite}
@@ -108,9 +109,7 @@ h1 span{background:linear-gradient(90deg,#38bdf8,#a78bfa,#38bdf8);background-siz
 .btn:active{transform:scale(.97);animation:none}
 @media(hover:hover){.btn:hover{box-shadow:0 18px 40px -8px rgba(56,189,248,.9)}}
 
-/* Чтобы вложенные элементы не перехватывали клик на iOS/Safari */
 .btn * {pointer-events:none;}
-
 .btn svg{width:26px;height:26px;flex:none}
 .btn .t{text-align:left;line-height:1.2}
 .btn b{display:block;font-size:18px;font-weight:800}
@@ -122,7 +121,8 @@ h1 span{background:linear-gradient(90deg,#38bdf8,#a78bfa,#38bdf8);background-siz
 @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
-<body>
+<!-- Добавлен ontouchstart="", чтобы сразу активировать тапы на iPhone и убрать "двойной клик" -->
+<body ontouchstart="">
 
 <div class="bg"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div><div class="grid"></div></div>
 
@@ -176,9 +176,18 @@ setLang(s||((navigator.language||'').toLowerCase().startsWith('uz')?'uz':'ru'));
 document.getElementById('cta').addEventListener('click',()=>{ if(window.fbq) fbq('track','Lead'); });
 
 // ЗАПРЕТ КОНТЕКСТНОГО МЕНЮ И КОПИРОВАНИЯ
-document.addEventListener('contextmenu', e => e.preventDefault()); // Отключает ПКМ / долгое нажатие
-document.addEventListener('copy', e => e.preventDefault());     // Блокирует сочетание Ctrl+C
-document.addEventListener('selectstart', e => e.preventDefault()); // Блокирует выделение мышкой
+document.addEventListener('contextmenu', e => {
+  // Не блокируем меню для самой кнопки, чтобы она корректно перехватывала тапы
+  if (e.target.closest('a') === null) {
+    e.preventDefault();
+  }
+}); 
+document.addEventListener('copy', e => e.preventDefault());     
+document.addEventListener('selectstart', e => {
+  if (e.target.closest('a') === null) {
+    e.preventDefault();
+  }
+}); 
 </script>
 </body>
 </html>
